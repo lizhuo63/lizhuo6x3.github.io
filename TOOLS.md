@@ -1,12 +1,12 @@
-<link rel="stylesheet" href="http://rbr3i8xre.hd-bkt.clouddn.com/css/local.css" type="text/css">
+<link rel="stylesheet" href="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/css/local.css" type="text/css">
 
-![hello3_show](http://rbr3i8xre.hd-bkt.clouddn.com/media/img/hello3.png ":size=16%")
+![hello3_show](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/media/img/hello3.png ":size=16%")
 
 > [!TIP]
 > 本栏主要是收纳好用的和常用的工具。
 > **本栏的核心方向**：
 >
-> + 在线小工具、网站、第三方包、优秀软件、应必会框架。
+> + 在线小工具、网站、第三方包、优秀软件、开源。
 
 # 在线工具
 <!-- tabs:start -->
@@ -32,35 +32,3 @@
 <!-- tabs:end -->
 
 # 第三方包
-
-# 必会架构
-
-## DAO
-
-### mysql
-
-### redis
-
-#### redis
-
-##### redis
-
-## ORM
-
-### Mybatis
-
-### Mybatis-plus
-
-## Spring
-
-### SpringBoot
-
-### SpringSecurity
-
-## Viwe
-
-### Vue
-
-## AMQP
-
-### Rabbitmq

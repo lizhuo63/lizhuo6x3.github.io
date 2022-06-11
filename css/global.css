@@ -41,6 +41,13 @@
     font-weight: bold;
 }
 
+.app-nav ul ul a {
+    font-size: 18px;
+    font-family: 楷体;
+    line-height: 8px;
+    font-weight: bold;
+    color: #574266;
+}
 /*github图标*/
 .github-corner svg {
     height: 60px;
@@ -66,13 +73,14 @@
 
 /*缩进*/
 .sidebar ul {
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 /*左侧栏字体*/
 .sidebar-nav ul li a {
     font-weight: 550;
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 24px;
 }
 
 /*左侧菜单收纳按钮*/

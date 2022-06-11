@@ -1,4 +1,4 @@
-![logo](http://rbr3i8xre.hd-bkt.clouddn.com/media/img/logo.png ":size=18%")
+![logo](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/media/img/logo.png ":size=18%")
 
 # 关于本站
 

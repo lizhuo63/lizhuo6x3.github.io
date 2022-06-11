@@ -9,13 +9,13 @@
 </div>
 
 <biv class="footer_show">
-<img src="http://rbr3i8xre.hd-bkt.clouddn.com/media/img/bye3.png" >
+<img src="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/media/img/bye3.png" >
 </biv>
 <biv class="footer_show">
-<img src="http://rbr3i8xre.hd-bkt.clouddn.com/media/img/bye2.png">
+<img src="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/media/img/bye2.png">
 </biv>
 <biv class="footer_show">
-<img src="http://rbr3i8xre.hd-bkt.clouddn.com/media/img/bye1.png">
+<img src="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/media/img/bye1.png">
 </biv>
 </div>
 
