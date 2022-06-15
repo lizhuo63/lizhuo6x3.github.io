@@ -186,7 +186,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 在Controller中添加@ExceptionHandler注解的方法来处理异常，这种方式只会对自身Controller的异常有效； 此外配合@ControllerAdvice注解来创建异常解析处理器，这种方式定义的异常处理方法将是全局的，对所有Controller抛出的异常都有效；
 
 ```java
-// 处理所有@RestController注解
+// 处理所有@RestController注解标注的控制器
 @ControllerAdvice(annotations = RestController.class)
 // 处理包路径下的所有控制器
 // @ControllerAdvice(basePackages = "org.example.controllers")
@@ -205,8 +205,6 @@ public class GlobalException {
     }
 }
 ```
-
-
 
 # 注解开发
 
@@ -284,3 +282,5 @@ model.addAttributes(键值对)，可将键值对直接存入requestContext对象
 ## Json
 
 ![image-20220220184310621](https://gitee.com/lizhuo6x3/gallery_0/raw/master/img/image-20220220184310621.png)
+
+# 参数接收

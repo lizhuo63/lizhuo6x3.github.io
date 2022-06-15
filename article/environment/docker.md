@@ -8,7 +8,7 @@
 ### mysql
 
 ```
-docker run -itd -p 3306:3306 --name=c_mysql8 \
+docker run -itd -p 3306:3306 --name=mysql8 \
 --privileged=true -v /home/lz/public/docker/mysql8/conf:/etc/mysql/conf.d \
 --privileged=true -v /home/lz/public/docker/mysql8/logs:/logs \
 --privileged=true -v /home/lz/public/docker/mysql8/data:/var/lib/mysql \
@@ -20,7 +20,7 @@ mysql:8
 ### redis
 
 ```
-docker run -itd -p 6379:6379 -p 16379:16379 --name c_redis \
+docker run -itd -p 6379:6379 -p 16379:16379 --name redis6 \
 --privileged=true -v /home/lz/public/docker/redis/data:/data \
 --privileged=true -v /home/lz/public/docker/redis/conf/redis.conf:/etc/redis/redis.conf \
 --net mynet --ip 192.168.0.3 redis:6 redis-server /etc/redis/redis.conf

@@ -108,7 +108,7 @@
 > + [SpringMVC](article/frame/spring/springMVC.md)
 > + [SpringBoot](article/frame/spring/springBoot.md)
 #### **ORM**
-> + [Mybatis](article/frame/mybatis.md)
+> + [Mybatis](article/frame/orm/mybatis.md)
 #### **RPC**
 
 #### **MQ**

@@ -169,23 +169,7 @@ HashMap在定位桶索引时，使用了位运算进行了优化【hash%length==
 
 # Spring
 
-## ApplicationContext和Beanfactory的区别
 
-+ ApplicationContext实现了Beanfactory
-
-+ BeanFactory没有扩展 Spring 中MessageResource 接口，没有国际化功能。相反，ApplicationContext扩展了MessageResource接口。
-+ ApplicationContext 扩展了 ResourceLoader(资源加载器)接口，从而可以用来加载多
-  个 Resource，而 BeanFactory 是没有扩展 ResourceLoader。
-+ ApplicationContext 扩展了 EventPublish，具有强大的事件机制
-+ BeanFactroy采用的是延迟加载形式来注入 Bean 的，即只有在使用到某个Bean 时(调用 getBean())，才对该 Bean 进行加载实例化。而 ApplicationContext 是在容器启动时，一次性创建了所有的 Bean。
-
-## Bean加载流程
-
-<img src="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-13_22-10-57.png" style="zoom: 67%;" />
-
-1. 程序启动后，由BeanDefinationReader加载配置元信息，并将其转化为BeanDefination
-2. 将BeanDefination注册到BeanDefinationRegistry中
-3. 最后由BeanFactoryPostProcessor对BeanDefinationRegistry中的的BeanDefination进行修改。
 
 ## Bean作用域
 
@@ -226,17 +210,6 @@ DI即“依赖注入”**：**组件之间的依赖关系由容器在运行期�
 + singletonFactories（三级缓存） 映射创建Bean的原始工厂
 
 当 Spring 为某个 Bean 填充属性时，首先会寻找需要注入对象的名称，然后依次执行 getSingleton() 方法得到所需注入的对象，而获取对象的过程就是依次从一级缓存、二级缓存中获、三级缓存中获取，如果三级缓存中也没有，那么就会去执行 doCreateBean() 方法创建这个 Bean。
-
-## 事务传播行为
-
-|   PROPAGATION_REQUIRED    | 有事务，就延用当前事务。没有事务就开启一个新事务。 |
-| :-----------------------: | :------------------------------------------------: |
-|   PROPAGATION_SUPPORTS    |  有事务，就延用当前事务。没有事务就**不用事务**。  |
-|   PROPAGATION_MANDATORY   |   有事务，就延用当前事务。没有事务就**报异常**。   |
-| PROPAGATION_REQUIRES_NEW  | 开启一个新事务。如果事务已经存在，就将该事务挂起。 |
-| PROPAGATION_NOT_SUPPORTED |      总是非事务地执行，并挂起任何存在的事务。      |
-|     PROPAGATION_NEVER     | 总是非事务地执行，如果存在一个活动事务，则抛出异常 |
-|    PROPAGATION_NESTED     |  如果一个活动的事务存在，则运行在一个嵌套的事务中  |
 
 
 
