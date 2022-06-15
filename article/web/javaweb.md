@@ -45,7 +45,7 @@
 
 在Spring Boot中可以监听多种事件，比如：
 
-+ pplicationStartedEvent：spring boot启动监听类
++ ApplicationStartedEvent：spring boot启动监听类
 + ApplicationEnvironmentPreparedEvent：环境事先准备
 + ApplicationPreparedEvent：上下文context准备时触发
 + ApplicationReadyEvent：上下文已经准备完毕的时候触发

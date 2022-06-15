@@ -12,7 +12,7 @@
 > + [docker手册](article/environment/docker.md)
 > + [node安装](article/environment/node.md)
 > + [git使用](article/environment/git.md)
-> + [manjaro尝鲜](article/environment/manjaro.md)
+
 
 
 # 🛰️ 基础知识
@@ -35,9 +35,24 @@
 ## 🧮 算法实录
 
 ## 🧱 重构和设计模式
+<!-- tabs:start -->
+#### **UML类图**
+
+<!-- tabs:end -->
+
 
 # ☕ java
 <!-- tabs:start -->
+#### **异常**
+> + [异常](article/java/java_exception.md)
+#### **注解**
+> + [注解](article/java/java_annotation.md)
+#### **反射&代理**
+> + [反射](article/java/java_reflex.md)
+> + [静态代理]()
+> + [动态代理]()
+#### **IO**
+
 #### **集合**
 ```plantuml
 @startmindmap
@@ -60,21 +75,23 @@
   @endmindmap
 ```
 + [Collection](article/java/java_collection.md?id=collection)
+    + [List](article/java/java_collection.md?id=list)
+    + [Set](article/java/java_collection.md?id=set)
 + [Map](article/java/java_collection.md?id=map)
-
-#### **流式**
-
-#### **多线程**
 
 #### **函数式**
 
+#### **多线程**
+
 #### **JVM**
+> + [class结构](article/java/jvm/jvm_class_structure.md)
+> + [JVM数据模型](article/java/jvm/jvm_data_model.md)
+> + [JVM内存模型](article/java/jvm/jvm_memory_model.md)
+> + [类加载机制](article/java/jvm/jvm_class_loading.md)
+> + [对象创建](article/java/jvm/jvm_object_creating.md)
+> + [GC](article/java/jvm/jvm_GC.md)
 
-#### **锁**
-
-#### **源码API**
-
-#### **面典**
+#### **源码**
 
 <!-- tabs:end -->
 
@@ -87,7 +104,9 @@
 #### **View**
 
 #### **Spring**
-
+> + [Spring](article/frame/spring/spring.md)
+> + [SpringMVC](article/frame/spring/springMVC.md)
+> + [SpringBoot](article/frame/spring/springBoot.md)
 #### **ORM**
 > + [Mybatis](article/frame/mybatis.md)
 #### **RPC**
