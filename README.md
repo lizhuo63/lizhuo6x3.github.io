@@ -33,6 +33,13 @@
 <!-- tabs:end -->
 
 ## 🧮 算法实录
+<!-- tabs:start -->
+#### **排序**
+> + [排序](article/algorithm/sort.md)
+#### **查找**
+> + [查找](article/algorithm/search.md)
+
+<!-- tabs:end -->
 
 ## 🧱 重构和设计模式
 <!-- tabs:start -->
@@ -96,8 +103,12 @@
 <!-- tabs:end -->
 
 # 🛢️ 数据库
+<!-- tabs:start -->
+#### **MySQL**
 > + [MySQL](article/database/MySQL.md)
+#### **Redis**
 > + [Redis](article/database/Redis.md)
+<!-- tabs:end -->
 
 # 🛴 框架
 <!-- tabs:start -->

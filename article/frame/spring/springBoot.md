@@ -17,6 +17,13 @@
 4. 打包
 5. 部署到Tomcat
 
+# 运行原理
+
+1. SpringBoot 启动类通过@EnableAutoConfiguration 注解开启自动配置
+2. 扫描各个 jar 包META-INF 目录下的spring.factories文件，并加载其中注册的 AutoConfiguration 类
+3. 通过@Conditional 注解指定的生效条件（Starters 提供的依赖、配置或 Spring 容器中是否存在某个 Bean 等）判断当前AutoConfiguration类是否要实例化该 AutoConfiguration 类中定义的 Bean（组件等），并注入 Spring 容器。
+4. 最后由Starters提供默认的配置和以来支持
+
 # 应⽤与配置
 
 ## 基本结构
@@ -107,7 +114,7 @@ public class MyApplication {
 
 ## 大致流程
 
-![image-20220215103715971](https://gitee.com/lizhuo6x3/gallery_0/raw/master/img/image-20220215103715971.png)
+![image-20220616091050965](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/image-20220616091050965.png)
 
 ## 配置体系
 
@@ -198,9 +205,7 @@ private String name;
 
 #### 为静态属性赋值
 
-1. 
-
-<img src="https://gitee.com/lizhuo6x3/gallery_0/raw/master/img/image-20220215132439637.png" alt="image-20220215132439637" style="zoom: 67%;" />
+1. ![image-20220616091334223](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/image-20220616091334223.png)
 
 
 2.
@@ -249,7 +254,7 @@ Environment：全部对应，可通过getProperty获取任意已配置的数据
 
 #### @PropertySource
 
-​		通过@PropertySource 指定⼀个配 置⽂件，⽀持fifile:绝路径，和classpath:路径。 
+​		通过@PropertySource 指定⼀个配 置⽂件，⽀持file:绝路径，和classpath:路径。 
 
 ```java
 @PropertySource(value = {"classpath:/user.properties"}, encoding = "UTF- 8")
@@ -539,6 +544,61 @@ this.animal = animal ;}
    ```
 
 2. 使用**@Conditional(DatabaseConditiona.class)**标注目标bean
+
+# 定时任务
+
+## 注解方式
+
+### **cron表达式：**
+
+  1  秒（0~59）
+  2  分钟（0~59）
+  3 小时（0~23）
+  4  天（0~31）
+  5  月（0~11）
+  6  星期（1~7 1=SUN 或 SUN，MON，TUE，WED，THU，FRI，SAT）
+  7 年份（1970－2099）
+
+**通配符：**
+   **“*”：**代表所有值
+   **“/”：**指定数值增量{ “0/15”指从0开始每隔15x }
+   **“?”：**仅用于天（月）和天（星期）两个子表达式，表示不指定值，当2个子表达式其中之一被指定了值以后，为了避免冲突，需要将另一个子表达式的值设为“？”
+   **“L”：**仅被用于天（月）和天（星期）两个子表达式，“6L”表示这个月的倒数第６天
+   **W：**字符代表着平日(Mon-Fri)，用来指定离指定日的最近的一个平日。例如15W 意味着 "离该月15号的最近一个平日。
+   **C：**指计划所关联的日期，如果日期没有被关联，则相当于日历中所有日期。例如5C在日期字段中就相当于日历5日以后的第一天。
+   字段   允许值   允许的特殊字符
+   秒           0-59           , - * /
+   分           0-59           , - * /
+   小时           0-23           , - * /
+   日期           1-31           , - * ? / L W C
+   月份           1-12 或者 JAN-DEC           , - * /
+   星期           1-7 或者 SUN-SAT           , - * ? / L C #
+   年（可选）           留空, 1970-2099           , - * /
+
+```java
+@Component
+@EnableScheduling   //可以在启动类上注解也可以在当前文件
+//@EnableAsync   // 开启多线程r
+public class TestJob {
+ 
+    @Scheduled(cron = "0/10 * * * * ?")
+    public void runfirst(){
+        System.out.println("********first job is ok******");
+    }
+ 	//fixedRatei配置了上一次任务的开始时间到下一次任务的开始时间的间隔，每次任务都会执行； 
+    @Scheduled(fixedRate = 1000 * 10)
+    public void runsecend(){
+        System.out.println("********second job is ok******");
+    }
+ 	//fixedDelay配置了上一次任务的结束时间到下一次任务的开始时间的间隔，每次任务都会执行； 
+    @Scheduled(fixedDelay=1000)
+    public void runThird(){
+        System.out.println("********third job is ok*******");
+    }
+}
+```
+
+
 
 # 框架整合
 
