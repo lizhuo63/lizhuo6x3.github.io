@@ -18,9 +18,18 @@
 # 🛰️ 基础知识
 
 ## 💻 计算机
-> + [操作系统](article/basis/operating_system.md)
-> + [计算机网络](article/basis/network.md)
-> + [linux通识](article/basis/linux.md)
+<!-- tabs:start -->
+#### **操作系统**
+![](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-16_18-59-20.png ':size=60%')
+> + [进程管理](article/computer/os/process_management/process.md)
+> + [内存管理]()
+> + [磁盘管理]()
+#### **计算机网络**
+
+#### **linux通识**
+
+<!-- tabs:end -->
+
 
 ## 🎰 数据结构
 <!-- tabs:start -->
@@ -136,4 +145,10 @@ MQ(message queue)消息队列是一种跨进程的通信机制，用于上下游
 
 #### **Search**
 
+<!-- tabs:end -->
+
+# ✍️学习总结
+<!-- tabs:start -->
+#### **1**
+> + [我眼中的JavaWeb]()
 <!-- tabs:end -->
