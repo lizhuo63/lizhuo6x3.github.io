@@ -27,6 +27,7 @@
 [alias]
 	gs=status
 	gc=commit -m
+	gca=git commit --amend -m
 	gl=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit  
 	gb=branch
 	ga=add .
@@ -45,6 +46,7 @@
 ```
 alias gs="git status"
 alias gc="git commit -m "
+alias gca="git commit --amend -m "
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit  "
 alias gb="git branch"
 alias ga="git add ."

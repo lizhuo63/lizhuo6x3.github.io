@@ -150,5 +150,5 @@ MQ(message queue)消息队列是一种跨进程的通信机制，用于上下游
 # ✍️学习总结
 <!-- tabs:start -->
 #### **1**
-> + [我眼中的JavaWeb]()
+> + [我眼中的JavaWeb](article/summary/java_web.md)
 <!-- tabs:end -->

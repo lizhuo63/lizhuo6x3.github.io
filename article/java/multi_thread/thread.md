@@ -79,14 +79,13 @@ java中线程的本质就是从当前运行分支中创建出一个新的**可�
 
 
 
-
 # 线程状态
 
-![](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-18_18-28-39.png)
+![zhuang taizhuang tai](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-18_18-28-39.png)
 
 + **NEW,新建状态。** 创建了线程对象,在调用 start()启动之前的状态;
 + **RUNNABLE,可运行状态。** 包含:READY 和RUNNING 两个状态. READY 状态可以被线程调度器进行调度并进入RUNNING 状 态 ,Thread.yield()方法可从RUNNING状态转换为 READY 状态。
-+ **BLOCKED阻塞状态。**线程发起阻塞的 I/O 操作或者申请由其他线程占用的独占资源（如锁）时会转入BLOCKED 阻塞状态.。处于阻塞状态的线程不会占用CPU资源，当阻塞I/O操作执行完,或者线程获得了其申请的资源,线程可以转换为 RUNNABLE。
++ zhuang tai**BLOCKED阻塞状态。**线程发起阻塞的 I/O 操作或者申请由其他线程占用的独占资源（如锁）时会转入BLOCKED 阻塞状态.。处于阻塞状态的线程不会占用CPU资源，当阻塞I/O操作执行完,或者线程获得了其申请的资源,线程可以转换为 RUNNABLE。
 + **WAITING 等待状态。** object.wait(), thread.join()会把线程转换为 WAITING 等待状态, 执行 object.notify()方法,或者加入的线程执行完毕,当前线程会转换为 RUNNABLE 状态。
 + **TIMED_WAITING 状态。**与 WAITING 状态的区别在于处于该状态的线程不会无限的等待,如果该线程在指定的时间内没有完成期望的操作，就会自动转换为 RUNNABLE。
 + **TERMINATED 终止状态。**线程结束或运行完毕。
@@ -193,3 +192,72 @@ public class NewThread {
 + 引用型 AtomicReference, AtomicStampedReference,AtomicMarkableReference
 
 # 线程通信
+
+## 等待通知机制
+
+当线程A的执行条件不成立时，可将A挂起持续等待，直到其他线程执行后更新了状态并使其满足A的执行后，才将A线程唤醒。
+
+### wait( )
+
++ 可将当前线程挂起等待，直到被唤醒或者中断。
+
++ 调用后，当前线程立即暂停转入等待状态，并且释放锁对象。
+
++ wait( )必须要**<u>由锁对象在临界区调用</u>**，否则有可能会抛异常IllegalMonitorStateException
+
+    ```
+     synchronized(锁对象){
+     	while(保护条件不成立){
+     	//通过锁对象调用wait()方法，暂停当前线程
+     	锁对象.wait();
+     	}
+     	while(保护条件成立){
+     		继续执行;
+     	}
+     }
+    ```
+
+### notify() / notifyAll()
+
++ 它们用于唤醒线程，被唤醒的线程转入阻塞状态，
+
++ 他不会立即释放锁对象，而是需要等待当前线程的临界区代码执行完毕后才释放锁对象。[即被唤醒线程不会立即执行，而是先转入阻塞，当唤醒线程临界区执行完后，才获取锁，正式执行]
+
++ notify() / notifyall() 必须要**<u>由锁对象在临界区调用</u>**，否则有可能会抛异常IllegalMonitorStateException
+
+    ```
+     synchronized(锁对象){
+     	执行 保护条件 的修改代码;
+     	//唤醒其他线程
+     	锁对象.notify();
+     }
+    ```
+
+### interrupt( )
+
+会产生 InterruptedException 异常，能中断线程的等待状态即wait( )等待。其实只要在同步代码块中产生任何异常，导致线程终止，都会释放锁对象。
+
+
+
+## ThreadLocal
+
+等待通知机制的核心思想是控制多线程对共享数据的有序(串行)访问来保证线程安全，好比5个人排队使用一个充电器；而ThreadLocal则是通过对当前线程绑定该线程私有的局部变量，来实现隔离达到线程安全。好比5个人每人兜里都有自己的充电器。
+
+所以对比来看，ThreadLocal是空间换时间，有更好的并发表现；而等待通知机制则是空间换时间，并发效能较差。
+
+ThreadLocal中填充的变量属于当前线程，对其他线程而言是隔离的。ThreadLocal为变量在每个线程中都创建了一个副本，那么每个线程可以访问自己内部的副本变量。
+
+### 简单使用
+
+```java
+//1. 创建ThreadLocal实例
+ThreadLocal<String> localName = new ThreadLocal();
+//2. 设值
+localName.set("ABC");
+//3. 取值使用
+String name = localName.get();
+//4. 删除
+localName.remove();
+```
+
+### 原理
