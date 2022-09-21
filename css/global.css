@@ -253,6 +253,19 @@ u{
     color: #aa4c8f;
 }
 
+/*示例*/
+.markdown-section blockquote {
+    margin: 0 0;
+}
+.docsify-tabs__tab--active+.docsify-tabs__content ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.docsify-tabs docsify-tabs--classic.docsify-tabs__content blockquote{
+    margin-top: 5px;
+    margin-bottom: 0;
+}
 
 /*==================================底部页脚==================================*/
 .footer_box {

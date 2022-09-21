@@ -15,11 +15,15 @@
 > + [JakartaEE规范](https://projects.eclipse.org/working-group/jakarta-ee)
 
 #### **DataBase**
-
+> + [Mysql手册](https://dev.mysql.com/doc/refman/8.0/en/)
+> + [Redis手册](https://redis.io/docs/)
+> + [Mongodb手册](https://www.mongodb.com/docs/)
 > + [ElasticSearch-java-API](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/7.17/index.html)
-> + [JavaEE规范](https://www.oracle.com/java/technologies/javaee/javaeetechnologies.html)
-> + [JakartaEE规范](https://projects.eclipse.org/working-group/jakarta-ee)
 
-####
+#### **云服务**
+
+> + [阿里云OSS](https://help.aliyun.com/document_detail/32007.html)                             [阿里云短信](https://help.aliyun.com/document_detail/262062.html)
+> 
+
 
 <!-- tabs:end -->

@@ -98,3 +98,9 @@ public class GlobalControllerAdviceController {
 2. 定义异常枚举
 3. 创建异常全局处理器
 4. **将异常全局处理器加入扫描**
+
+
+
+## mongodb gridFs.filex查询
+
+19:22:55.959 [http-nio-31001-exec-2] ERROR c.l.f.exception.ExceptionCatch - catch exception:Value expected to be of type DOCUMENT is of unexpected type STRING

@@ -1,22 +1,3 @@
-# 特点
-
-1. 创建独⽴的Spring应⽤程序 
-2. 直接嵌⼊Tomcat，Jetty或Undertow（⽆需部署WAR⽂件） 
-3. 提供依赖项管理，以简化构建配置 
-4. 尽可能⾃动配置Spring和第三⽅库 
-5. 提供可⽤于⽣产的功能，例如指标，运⾏状况检查
-6. 完全没有代码⽣成，也不需要XML配置 
-
-通过spring创建一个简单的HelloWorld的Web项目，大致有以下几步：
-
-​			创建WEB工程
-
-1. 编写web.xml
-2. 引入SpringMVC相关第三方包
-3. 配置mvc.xml，装备组件
-4. 打包
-5. 部署到Tomcat
-
 # 运行原理
 
 1. SpringBoot 启动类通过@EnableAutoConfiguration 注解开启自动配置

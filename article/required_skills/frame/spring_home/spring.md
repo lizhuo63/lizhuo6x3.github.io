@@ -43,14 +43,6 @@
 
 ## IOC容器
 
-为了规避复杂、传统的构建对象的方式，我们希望有一个管家能够帮助我们维护javaBean的整个生命周期。在构造Bean的时候，他能懂我心意，给他一个眼神（Bean的定义信息），他就能帮我们安排的明明白白，那么这个管家就是IOC容器了，他通过接收管理javaBean来为我们提供省心的服务。不难想象，我们会有一下使用场景：
-
-+ 我有Bean的定义，你来帮我构建一个Bean对象吧
-+ 这个Bean对象我不喜欢，你帮我取出来，我来改改
-+ 我要用我的Bean，你把它放着就行
-
-可以看出在后期的使用中，我们需要与IOC管家进行交互，他就说想拿什么Bean就去找Beanfactory去，我批准了。那么在一定的理解范围内，我说Beanfactory就是IOC管家应该没错吧。
-
 ![image-20220615144919563](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/image-20220615144919563.png)
 
 
@@ -59,7 +51,7 @@
 
 1. 它们两个都是IOC容器
 
-2. BeanFactory是一个工厂，主要用于根据BeanDefinition来生成Bean，当然也可以它也提供了一些获取Bean的方法。BeanFactroy是延迟注入Bean的，即只有在使用到某个Bean时，才对该Bean进行加载和实例化。<u>【注意】**FactoryBean**</u>是Spring所提供的一种灵话的创建Bean的方式，可以通过实现FactoryBean接口中的getObject( )方法来返回一个Bean对象。 
+2. BeanFactory是一个工厂，主要用于根据BeanDefinition来生成Bean。BeanFactroy是延迟注入Bean的，即只有在使用到某个Bean时，才对该Bean进行加载和实例化。<u>【注意】**FactoryBean**</u>是Spring所提供的一种灵话的创建Bean的方式，可以通过实现FactoryBean接口中的getObject( )方法来返回一个Bean对象。 
 
 3. ApplicationContext则在容器启动时，一次性创建了所有的 Bean。ApplicationContext实现了BeanFactory及其他接口，拥有比BeanFactory更多的功能
 

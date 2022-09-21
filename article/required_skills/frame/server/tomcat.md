@@ -1,28 +1,30 @@
 # tomcat结构图
 
-![](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-24_09-56-28.png)
-
-+ **Server：**代表着整个服务器
++ Server：代表着整个服务器
 
   + 但此时整个服务都耦合在一起了，后续将其分为请求监听和请求处理两块。
 
-+ **Service：**是一个Connector容器。用于高效绑定成对的请求和响应，即将同批次的任务交由一个Service来管理
++ Service：是一个Connector容器。用于高效绑定成对的请求和响应，即将同批次的任务交由一个Service来管理
 
-+ **Connector：**负责开启Socket并监听请求，返回数据
++ Connector：负责开启Socket并监听请求，返回数据
 
-+ **Container：**负责处理请求，后被细分为Engine、Host、Context、Wrapper。
++ Container：负责处理请求，后被细分为Engine、Host、Context、Wrapper。
 
-+ **Engine：**代表Web的应用容器，是Servlet的引擎
++ **Engine：List<Host>** 代表Web的应用容器，是Servlet的引擎，虚拟主机的直接容器
 
-+ **Host：**部署服务对应的域名（虚拟主机）
++ **Host：List<Context>** 部署服务对应的域名（虚拟主机），是Web应用的直接容器
 
-+ **Context：**表示一个独立的服务应用
++ **Context：List<Wrapper=Servlet类>** 表示一个独立的服务应用，是Servlet类的直接容器。**本应是Servlet实例的直接容器，但是对于一个Servlet类来讲若是出现了多实例场景，就不便于管理，且结构也不明朗，就出现了Wrapper结构**
 
-+ **Wrapper：**代表一个Servlet
++ **Wrapper：List<Servlet实例>** 代表一个Servlet类，是Servlet实例的直接容器
 
   ![](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/image-20211202093312956.png)
 
-![](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-24_01-45-00.png)
+
+
+<img src="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-24_09-56-28.png" style="zoom:70%;" />
+
+<img src="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-24_01-45-00.png" style="zoom:70%;" />
 
 + **Conector升级改造：**
   + **ProtocoHandler：**是一个协议处理器，根据不同协议和I/O方式提供不同实现支持

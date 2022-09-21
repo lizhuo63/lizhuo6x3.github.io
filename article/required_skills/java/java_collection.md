@@ -62,11 +62,9 @@ private class Itr implements Iterator<E> {
     int lastRet = -1;
 	//用来检查是否发生了并发操作，如果这两个值不一致，就会报错
     int expectedModCount = modCount;//此List被修改的次数
-
     public boolean hasNext() {
         return cursor != size();
     }
-
     public E next() {
         checkForComodification();
         try {
@@ -80,7 +78,6 @@ private class Itr implements Iterator<E> {
             throw new NoSuchElementException();
         }
     }
-
     public void remove() {
         if (lastRet < 0)
             throw new IllegalStateException();
@@ -96,7 +93,6 @@ private class Itr implements Iterator<E> {
             throw new ConcurrentModificationException();
         }
     }
-    
 	//当实际修改次数与预期修改次数不符(发生了并发并发操作)时，抛出并发异常，每次next(),remove()都会做此检查
     final void checkForComodification() {
         if (modCount != expectedModCount)
@@ -283,20 +279,66 @@ private class ListItr extends Itr implements ListIterator<E> {
 
 ### 容器特性
 
-+ **线程不安全（为什么？）**
++ 线程不安全
++ 存取无序，异步散列表(哈希表)，支持null(单null键，多null值)。
 
 
 
 ### 工作原理
 
-+ 存取无序，异步散列表(哈希表)，支持null(单null键，多null值)。
-+ 当初始容量(16)*装载因子(0.75)小于哈希表容量(实际数据量)时，会执行再散列(桶数2倍扩容)。最大容量为2^31
+#### 插值
 
-+ 当桶内元素不足6时，会优化为链表；当链表长度超过8时会调用treeifyBin方法，当桶数不足64时会执行扩容，达到64时会将链表优化为树。
+0. 根据Key计算hashcode，并携带hashcode,key,value进行插值。
 
-+ 四大构造
+   `(h = key.hashCode()) ^ (h >>> 16);` 采用高低位的异或运算进行哈希扰动，达到**将hashcode打散**的目的，但是hashcode必须大于65536 (2^16) 才有效果。
 
-    ![](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-05_11-07-56.png)
+1. 根据hashcode确定插入位置 [i]，`i = (n - 1) & hash`是取hash的后n-1个位，即n的余数。准备插值
+
+   1. 若tab[i]=null，则将key,value封装为Node,直接存入tab[i]
+   2. 若tab[i] != null && tab[i] 为 **TreeNode**，则将kv封装为 TreeNode插入到红黑树中，若该key已存在，则在遍历过程中会直接覆盖旧值
+   3. 若tab[i] != null && tab[i] 为 **Node**，则将kv封装为 Node 插到链尾，若该key已存在，则在遍历过程中会直接覆盖旧值
+
+#### 扩容
+
+<u>两个量：</u> threshold:扩容的(键值对)临界值   table.length:桶数组的容量
+
+创建：1. new(5)  this.threshold = tableSizeFor(5)=8; 2. new() resize()-->newCap=16;newThr=12。
+
+为了保证hashcode和整个HashMap的效率，避免一个索引位上挂了过多的元素，当map中的键值对数量超过0.75容量时，需要对桶数组进行2倍扩容，最终得到2次幂的值【为了支持高效的索引位计算】，**同时会伴随节点拷贝**。最大容量为2^31
+
+```java
+ //确定扩容容量为 2次幂的值，cap为2倍容量值
+ static final int tableSizeFor(int cap) {
+   int n = cap - 1; //防止cap恰为2次幂并对其扩容，造成浪费
+   n |= n >>> 1;//保证前两位是1
+   n |= n >>> 2;//保证前4位是1
+   n |= n >>> 4;//保证前8位是1
+   n |= n >>> 8;//保证前16位是1
+   n |= n >>> 16;//保证前32位是1
+   return n + 1;//会得到2次幂值
+   //结论：全为1的二进制数+1，会得到2次幂值
+}
+```
+
+##### 节点拷贝
+
+0. 在旧桶数组不为空的情况下，遍历数组
+
+1. 单节点：重新hash映射到新数组中
+
+2. 树节点：拆分树，并重新hash映射到新数组中
+
+3. 链节点：拆为高低链，低链不变，高链的新索引为[ i + oldCap]。
+
+   【拆分规则：(e.hash & oldCap) == 0，它的作用是拿到扩容前后取余的那个偏移位的bit，若为0，则扩容后索引位不会改变(余数不变)并将其加到**低链**；若为1，则扩容后索引位会在原位置增加"旧容量"(余数的高位加了一个1)并将其加到**高链**】
+
+#### 树化
+
+当链表长度达到8时会尝试树化，然后再判断当前map的键值对数量是否达到了64，如果是就数化，否则就扩容。而当树的节点不足6时，会进行链化。
+
+
+
+
 
 + **put操作**
 
@@ -407,7 +449,7 @@ private class ListItr extends Itr implements ListIterator<E> {
 
 ### 容器特性
 
-元素存取有序，
+元素存取有序(基于put排序)
 
 ### 工作原理
 

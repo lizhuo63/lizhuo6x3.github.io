@@ -1,6 +1,6 @@
 # 什么是反射
 
-Java属于先编译再运行的语言，程序中的类在编译期即可确定，而若在运行期间需要动态加载某些类时，这些类却没有被加载到JVM。所以需要在运行时动态地创建对象并调用其属性，这便是反射。它无关运行期的具体对象实例，本质是JVM通过class对象进行反编译，从而获取对象的各种信息。
+Java属于先编译再运行的语言，程序中的类在编译期即可确定，而若在运行期间需要动态加载某些类时，就无法将它们加载到JVM。所以需要在运行时动态地创建对象并调用其属性，这便是反射。它无关运行期的具体对象实例，本质是JVM通过class对象进行反编译，从而获取对象的各种信息。
 
 ![image-20220614214606742](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/image-20220614214606742.png)
 
@@ -18,7 +18,7 @@ Java属于先编译再运行的语言，程序中的类在编译期即可确定�
 
 + **2. ClassLoader.loadClass()**
 
-  通过类加载器将.class字节码文件加载到JVM，和1的效果差不多[都存在类加载过程]，实际上1是在编译拿到.class文件后调用了2
+  通过类加载器将.class字节码文件加载到 JVM，和1的效果差不多[都存在类加载过程]，实际上1是在编译拿到 .class 文件后调用了2
 
 + **3. 类名.class**
 
@@ -28,7 +28,7 @@ Java属于先编译再运行的语言，程序中的类在编译期即可确定�
 
   与3一样，无需执行类加载，多用于已存在对象实例的场景。
 
-<u>【注意】：同一个.class文件只会被加载一次，加载时执行的ClassLoader.loadClass()默认要执行 `checkPackageAccess()` 进行访问检查，可通过 `accessibleObject.setAccessible(true)` 关闭检查，实现优化。</u>
+<u>【注意】：同一个 .class 文件只会被加载一次，加载时执行的 ClassLoader.loadClass() 默认要执行 `checkPackageAccess()` 进行访问检查，可通过 `accessibleObject.setAccessible(true)` 关闭检查，实现优化。</u>
 
 ![image-20220817041953973](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/image-20220817041953973.png)
 

@@ -156,8 +156,6 @@ List<User> findUsersForEacheList(List<Integer> list);
 </select>
 ```
 
-
-
 ## 少量参数
 
 ```xml
@@ -435,7 +433,7 @@ public class ProjectRecord implements Serializable {
             <id column="empno" property="empno"></id>
             <id column="pid" property="pid"></id>
             <!--一对一 -->
-            <association property="emp" javaType="emp">
+            <association property="emps" javaType="emp">
                 <id property="empno" column="empno"></id>
                 <result property="ename" column="ename"></result>
                 <result property="job" column="job"></result>

@@ -184,7 +184,7 @@ docker run -d --name rocketmqConsole -p 9001:9001 --network mynet --ip=192.168.0
  styletang/rocketmq-console-ng
 ```
 
-
+### 注册中心
 
 
 

@@ -92,55 +92,6 @@ sudo cp -R config/* /opt/elasticsearch-7.17.5/config/
 3 重启es
 ```
 
-## LogStash
-
-**配置：**
-
-```properties
-input {
-  file {
-    path => "D:/logstash-datas/movies.csv"
-    start_position => "beginning"
-    sincedb_path => "D:/elasticsearch/logstash-7.4.2/db_path.log"
-  }
-}
-filter {
-  csv {
-    separator => ","
-    columns => ["id","content","genre"]
-  }
-
-  mutate {
-    split => { "genre" => "|" }
-    remove_field => ["path", "host","@timestamp","message"]
-  }
-
-  mutate {
-
-    split => ["content", "("]
-    add_field => { "title" => "%{[content][0]}"}
-    add_field => { "year" => "%{[content][1]}"}
-  }
-
-  mutate {
-    convert => {
-      "year" => "integer"
-    }
-    strip => ["title"]
-    remove_field => ["path", "host","@timestamp","message","content"]
-  }
-
-}
-output {
-   elasticsearch {
-     hosts => "http://localhost:9200"
-     index => "movies"
-     document_id => "%{id}"
-   }
-  stdout {}
-}
-```
-
 
 
 # ElasticSearch须知

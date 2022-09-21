@@ -17,7 +17,7 @@
 	<!-- 主题 -->
 	<link rel="stylesheet" href="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/css/vue.css"/>
 	<!--自定义样式修改-->
-	<link rel="stylesheet" href="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/css/global.css" type="text/css">
+	<link rel="stylesheet" href="/css/global.css" type="text/css">
 	<!-- 字体 -->
 	<link rel="stylesheet" href="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/css/fontawesome-free-all.min.css"/>
 	<!--gif控制-->
@@ -184,6 +184,7 @@
 <script src="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/js/ga.min.js"></script>
 <!-- 提示样式 -->
 <script src="https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/docsify-note/js/docsify-plugin-flexible-alerts.min.js"></script>
+
 <!-- 添加网站运行时间统计 -->
 <script language=javascript>
 	function siteTime() {
@@ -211,7 +212,6 @@
 		let diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
 		document.getElementById("sitetime").innerHTML = " 本站已安全运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分 " + diffSeconds + " 秒 ";
 	}
-
 	siteTime();
 </script>
 </body>

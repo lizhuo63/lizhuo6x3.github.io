@@ -14,56 +14,6 @@
 > + [node安装](article/common_tools/environment/node.md)
 > + [git使用](article/common_tools/environment/git.md)
 
-
-
-# 🛰️ 基础知识
-
-## 💻 计算机
-<!-- tabs:start -->
-#### **操作系统**
-![](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/Snipaste_2022-06-16_18-59-20.png ':size=60%')
-> + [进程管理](article/basic_knowledge/computer/os/process_management/process.md)
-> + [内存管理]()
-> + [磁盘管理]()
-#### **计算机网络**
-
-#### **linux通识**
-
-<!-- tabs:end -->
-
-
-## 🎰 数据结构
-<!-- tabs:start -->
-#### **线性表**
-
-#### **链式表**
-
-#### **树**
-
-<!-- tabs:end -->
-
-## 🧮 算法实录
-<!-- tabs:start -->
-#### **排序**
-> + [排序](article/basic_knowledge/algorithm/sort.md)
-#### **查找**
-> + [查找](article/basic_knowledge/algorithm/search.md)
-
-<!-- tabs:end -->
-
-## 🧱 重构和设计模式
-<!-- tabs:start -->
-#### **UML类图**
-
-#### **创建型**
-> + [简单工厂（几乎不用）](article/required_skills/rebuild/creational/factory.md?id=简单工厂)
-> + [工厂方法](article/required_skills/rebuild/creational/factory.md?id=工厂方法)
-> + [抽象工厂（拼装）](article/required_skills/rebuild/creational/factory.md?id=抽象工厂)
-> + [建造者](article/required_skills/rebuild/creational/builder.md)
-
-<!-- tabs:end -->
-
-
 # ☕ java
 <!-- tabs:start -->
 #### **异常**
@@ -77,31 +27,21 @@
 #### **IO**
 
 #### **集合**
-```plantuml
-@startmindmap
-* 集合
-  ** Collections[单列集合]
-  *** List【存取有序，元素可重复、有索引，支持null】
-  **** Vector[底层数据结构是数组。线程安全]
-  **** ArrayList[底层数据结构是数组。线程不安全]
-  **** LinkedList[底层数据结构是链表。线程不安全]
-  *** Set【存取无序、唯一，支持null】
-  **** HashSet[底层数据结构是哈希表(是一个元素为链表的数组) + 红黑树]
-  **** TreeSet[底层数据结构是红黑树(是一个自平衡的二叉树)]
-  **** LinkedHashSet[底层数据结构由哈希表(是一个元素为链表的数组)和双向链表组成。]
-  ** Map[双列映射]
-  *** HashMap
-  *** TreeMap
-  *** HashTable
-  *** LinkedHashMap
-  *** ConcurrentHashMap
-  @endmindmap
-```
-+ [Collection](article/required_skills/java/java_collection.md?id=collection)
-    + [List](article/required_skills/java/java_collection.md?id=list)
-    + [Set](article/required_skills/java/java_collection.md?id=set)
-+ [Map](article/required_skills/java/java_collection.md?id=map)
-
++ [Collection-单列集合](article/required_skills/java/java_collection.md?id=collection) 
+  + [List-存取有序，元素可重复、有索引，支持null](article/required_skills/java/java_collection.md?id=list)
+    + Vector[底层数据结构是数组。线程安全]
+    + ArrayList[底层数据结构是数组。线程不安全]
+    + LinkedList[底层数据结构是链表。线程不安全]
+  + [Set-存取无序、唯一，支持null](article/required_skills/java/java_collection.md?id=set)
+    + HashSet[底层数据结构是哈希表(是一个元素为链表的数组) + 红黑树]
+    + TreeSet[底层数据结构是红黑树(是一个自平衡的二叉树)]
+    + LinkedHashSet[底层数据结构由哈希表(是一个元素为链表的数组)和双向链表组成。]
++ [Map-双列集合](article/required_skills/java/java_collection.md?id=map)
+  + HashMap
+  + TreeMap
+  + HashTable
+  + LinkedHashMap
+  + ConcurrentHashMap
 #### **函数式**
 
 #### **多线程**
@@ -122,14 +62,15 @@
 # 🛢️ 数据库
 <!-- tabs:start -->
 #### **MySQL**
-## 实用篇
+> 实用篇
+  
 
-## 原理篇
-> + [MySQL的架构与执行](article/required_skills/database/mysql/mysql_framework_execution.md)
-> + [MySQL的索引](article/required_skills/database/mysql/mysql_indexes.md)
-> + [MySQL的事务和锁](article/required_skills/database/mysql/mysql_transaction.md)
-> + [MySQL优化](article/required_skills/database/mysql/mysql_optimization.md)
-> + [MySQL](article/required_skills/database/MySQL.md)
+> 原理篇
+  + [MySQL的架构与执行](article/required_skills/database/mysql/mysql_framework_execution.md)
+  + [MySQL的索引](article/required_skills/database/mysql/mysql_indexes.md)
+  + [MySQL的事务和锁](article/required_skills/database/mysql/mysql_transaction.md)
+  + [MySQL优化](article/required_skills/database/mysql/mysql_optimization.md)
+  + [MySQL](article/required_skills/database/MySQL.md)
 #### **Redis**
 > + [Redis](article/required_skills/database/redis/Redis.md)
 <!-- tabs:end -->
@@ -162,6 +103,52 @@ Message Queue 消息队列，一种用于上下游可跨线程的通信机制。
 **RabbitMQ：** 并发性能较好，实效性为微秒级；吞吐量到万级，MQ功能比较完备，健壮、稳定、易用、跨平台。
 
 #### **Search**
+
+<!-- tabs:end -->
+
+
+# 💻 计算机理论基础
+<!-- tabs:start -->
+#### **操作系统**
+> + [进程管理](article/basic_knowledge/computer/os/process_management/process.md)
+> + [内存管理]()
+> + [磁盘管理]()
+#### **🕸️ 计算机网络**
+
+#### **🌐 协议**
+
+<!-- tabs:end -->
+
+
+
+# 基础技能
+
+## 🎰 数据结构
+<!-- tabs:start -->
+#### **线性表**
++ 链表
++ 列表
+
+#### **树**
+
+<!-- tabs:end -->
+## 🧮 算法
+<!-- tabs:start -->
+#### **排序**
++ [排序](article/basic_knowledge/algorithm/sort.md)
+
+#### **查找**
++ [查找](article/basic_knowledge/algorithm/search.md)
+<!-- tabs:end -->
+## 🧱 重构和设计模式
+<!-- tabs:start -->
+#### **UML类图**
+
+#### **创建型**
++ [简单工厂（几乎不用）](article/required_skills/rebuild/creational/factory.md?id=简单工厂)
++ [工厂方法](article/required_skills/rebuild/creational/factory.md?id=工厂方法)
++ [抽象工厂（拼装）](article/required_skills/rebuild/creational/factory.md?id=抽象工厂)
++ [建造者](article/required_skills/rebuild/creational/builder.md)
 
 <!-- tabs:end -->
 
