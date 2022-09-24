@@ -4,6 +4,8 @@ Java属于先编译再运行的语言，程序中的类在编译期即可确定�
 
 ![image-20220614214606742](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/image-20220614214606742.png)
 
+## 反射的原理
+
 ![image-20220817030635752](https://lizhuo-file.oss-cn-hangzhou.aliyuncs.com/img/image-20220817030635752.png)
 
 源码在类加载时最终会以InstanceKlass的形式保留在jvm的方法区，它记录了源码的所有内容，其中_java_mirror映射的是该C++结构对应在JVM中的java类型【它同时**是InstanceKlass的访问入口**】，会以对应的Class类对象的形式存储在堆中。通过拿到Class类对象就能获取源码的字节码信息即InstanceKlass，进而获取各种信息数据，由此实现反射。
@@ -14,11 +16,13 @@ Java属于先编译再运行的语言，程序中的类在编译期即可确定�
 
 + **1. Class.forName("全限定名")** 
 
-  支持编译阶段的反射,可将一个还未编译过多源码文件加载进来，多用于框架的配置类。
+  支持编译阶段的反射,可将一个还未编译过的源文件加载进来，多用于框架的配置类。
+
+  除了将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的**static块**。
 
 + **2. ClassLoader.loadClass()**
 
-  通过类加载器将.class字节码文件加载到 JVM，和1的效果差不多[都存在类加载过程]，实际上1是在编译拿到 .class 文件后调用了2
+  通过类加载器将.class字节码文件加载到 JVM，和1的效果差不多[都存在类加载过程]，就是将.class文件加载到jvm中，不会执行static中的内容,只有在**newInstance**才会去执行static块。
 
 + **3. 类名.class**
 

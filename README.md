@@ -13,6 +13,7 @@
 > + [docker手册](article/common_tools/environment/docker.md)
 > + [node安装](article/common_tools/environment/node.md)
 > + [git使用](article/common_tools/environment/git.md)
+> + [Nginx使用](article/common_tools/environment/Nginx.md)
 
 # ☕ java
 <!-- tabs:start -->
@@ -62,10 +63,6 @@
 # 🛢️ 数据库
 <!-- tabs:start -->
 #### **MySQL**
-> 实用篇
-  
-
-> 原理篇
   + [MySQL的架构与执行](article/required_skills/database/mysql/mysql_framework_execution.md)
   + [MySQL的索引](article/required_skills/database/mysql/mysql_indexes.md)
   + [MySQL的事务和锁](article/required_skills/database/mysql/mysql_transaction.md)
@@ -142,12 +139,10 @@ Message Queue 消息队列，一种用于上下游可跨线程的通信机制。
 <!-- tabs:end -->
 ## 🧱 重构和设计模式
 <!-- tabs:start -->
-#### **UML类图**
+#### **[UML类图](article/required_skills/rebuild/uml.md)**
 
 #### **创建型**
-+ [简单工厂（几乎不用）](article/required_skills/rebuild/creational/factory.md?id=简单工厂)
-+ [工厂方法](article/required_skills/rebuild/creational/factory.md?id=工厂方法)
-+ [抽象工厂（拼装）](article/required_skills/rebuild/creational/factory.md?id=抽象工厂)
++ [简单工厂（几乎不用）](article/required_skills/rebuild/creational/factory.md?id=简单工厂)  -/-  [工厂方法](article/required_skills/rebuild/creational/factory.md?id=工厂方法)  -/-  [抽象工厂（拼装）](article/required_skills/rebuild/creational/factory.md?id=抽象工厂)
 + [建造者](article/required_skills/rebuild/creational/builder.md)
 
 <!-- tabs:end -->
