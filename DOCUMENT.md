@@ -23,7 +23,16 @@
 #### **云服务**
 
 > + [阿里云OSS](https://help.aliyun.com/document_detail/32007.html)                             [阿里云短信](https://help.aliyun.com/document_detail/262062.html)
-> 
 
+#### **工具类库**
++ [Hutool](https://apidoc.gitee.com/dromara/hutool/)
+  <hr/>
++ [Apache Commons](https://commons.apache.org/)
+    + [commons-lang -> 为java.lang中的类提供额外的功能。](https://commons.apache.org/proper/commons-lang/javadocs/api-release/index.html)
+    + [commons-beanutils -> 围绕Java反射和自省API的包装器。](https://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/index.html)
+    + [commons-codec -> 通用编码/解码算法。](https://commons.apache.org/proper/commons-codec/apidocs/index.html)
+    + [commons-collections -> 扩展或增强Java集合框架。](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/index.html)
+    + [commons-math -> 轻量级、独立的数学和统计组件。](https://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/index.html)
+    
 
 <!-- tabs:end -->

@@ -12,10 +12,114 @@
 
 # JDK动态代理的实现
 
-**Proxy动态代理类：**
+1. 创建代理对象
+   1. 代理类实现目标类接口
+   2. 创建InvocationHandler调用处理器
+      1. 声明一个以目标类对象为入参的构造
+      2. 实现invoke()
+2. 代理对象代理调用目标类方法。
 
+```java
+    public interface HelloService {
+        void sayHello();
+    }
+    /******************************************************/
+    public class HelloServiceImpl implements HelloService {
+      @Override
+      public void sayHello() {
+        System.out.println("hello");
+      }
+    }
+    /****************************************************/
+    public class HelloInvocationHandle implements InvocationHandler {
+        private Object target;
+        public HelloInvocationHandle(Object target) {
+            this.target = target;
+        }
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            System.out.println("=======proxy before=======");
+            Object result = method.invoke(target, args);
+            System.out.println("=======proxy end=======");
+            return result;
+        }
+    }
+		/****************************************************/
+public class HelloTest public static void main(String[] args) { 
+    HelloService hello = new HelloServiceImpl(); 
+    HelloInvocationHandle handle = new HelloInvocationHandle (hello); 
+    HelloService proxy = (HelloService) Proxy.newProxyInstance( 		                                    Thread.currentThread().getContextClassLoader (), 
+           hello.getClass().getInterfaces (),
+           handle);
+   proxy.sayHello();
+}
 ```
 
+
+
+**反编译得到的代理类源代码：**
+
+```java
+public final class $Proxy0 extends Proxy implements HelloService {
+    private static Method m1; //equals()方法
+    private static Method m3; // =========sayHello方法()
+    private static Method m2; //toString()方法
+    private static Method m0; //hashCode()方法
+ 
+    //这里就是我们之前提交的InvocationHandler这个构造方法！！
+    public $Proxy0(InvocationHandler var1) throws  {
+        super(var1);
+    }
+    public final boolean equals(Object var1) throws  {
+        try {
+            return ((Boolean)super.h.invoke(this, m1, new Object[]{var1})).booleanValue();
+        } catch (RuntimeException | Error var3) {
+            throw var3;
+        } catch (Throwable var4) {
+            throw new UndeclaredThrowableException(var4);
+        }
+    
+    //代理类的sayHello()方法
+    public final void sayHello() throws  {
+        try {
+            super.h.invoke(this, m3, (Object[])null);
+        } catch (RuntimeException | Error var2) {
+            throw var2;
+        } catch (Throwable var3) {
+            throw new UndeclaredThrowableException(var3);
+        }
+    }
+    public final String toString() throws  {
+        try {
+            return (String)super.h.invoke(this, m2, (Object[])null);
+        } catch (RuntimeException | Error var2) {
+            throw var2;
+        } catch (Throwable var3) {
+            throw new UndeclaredThrowableException(var3);
+        }
+    }
+    public final int hashCode() throws  {
+        try {
+            return ((Integer)super.h.invoke(this, m0, (Object[])null)).intValue();
+        } catch (RuntimeException | Error var2) {
+            throw var2;
+        } catch (Throwable var3) {
+            throw new UndeclaredThrowableException(var3);
+        }
+    }
+    static {
+        try {
+            m1 = Class.forName("java.lang.Object").getMethod("equals", new Class[]{Class.forName("java.lang.Object")});
+            m3 = Class.forName("proxy.service.HelloService").getMethod("sayHello", new Class[0]);
+            m2 = Class.forName("java.lang.Object").getMethod("toString", new Class[0]);
+            m0 = Class.forName("java.lang.Object").getMethod("hashCode", new Class[0]);
+        } catch (NoSuchMethodException var2) {
+            throw new NoSuchMethodError(var2.getMessage());
+        } catch (ClassNotFoundException var3) {
+            throw new NoClassDefFoundError(var3.getMessage());
+        }
+    }
+}
 ```
 
 

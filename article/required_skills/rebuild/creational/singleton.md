@@ -1,6 +1,6 @@
 # 背景
 
-​		某些特殊情况下或者特定有需求，要让目标只允许创建一个实例。
+​		某些特殊情况下或者特定有需求，要让目标类只允许创建一个实例。
 
 **核心：**
 
@@ -27,19 +27,19 @@ public class Singleton_00 {
 ​		相当于将实例创建的方式，用一个静态内部类封了起来。
 
 ```java
-public class Singleton_01 {
-		private static class SingletonHolder {
-				private static Singleton_01 instance = new Singleton_01();
-		}
-		private Singleton_01() {
-		}
-		public static Singleton_01 getInstance() {
-				return SingletonHolder.instance;
-		}
-}
+ public class SingleTon{
+  private SingleTon(){}
+   
+  private static class SingleTonHoler{
+     private static SingleTon INSTANCE = new SingleTon();
+ }
+ 
+  public static SingleTon getInstance(){
+    return SingleTonHoler.INSTANCE;
+  }
 ```
 
-
+静态内部类的优点是：外部类加载时并不需要立即加载内部类，内部类不被加载则不去初始化INSTANCE，故而不占内存【懒汉式】。即当SingleTon第一次被加载时，并不需要去加载SingleTonHoler，只有当getInstance()方法第一次被调用时，才会去初始化INSTANCE，第一次调用getInstance()方法会导致虚拟机加载SingleTonHoler类，这种方法不仅能确保线程安全，也能保证单例的唯一性，同时也延迟了单例的实例化。
 
 #  饿汉模式(线程安全)
 
@@ -109,34 +109,4 @@ public class DoubleCheckSingleton {
     }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
