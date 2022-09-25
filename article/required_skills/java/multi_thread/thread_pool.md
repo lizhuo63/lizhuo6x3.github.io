@@ -53,8 +53,8 @@ beforeExecute(Thread t, Runnable r)
 afterExecute(Runnable r, Throwable t)
 //:线程池终止时的钩子方法（停止钩子）
 terminated()
-【注意】
-beforeExecute和afterExecute两个方法在每个任务执行前后被调用，如果钩子（回调方法）引发异常，内部工作线程可能失败并突然终止。
+[注意]
+beforeExecute和afterExecute两个方法在每个任务执行前后被调用,如果钩子(回调方法)引发异常,内部工作线程可能失败并突然终止
 ```
 
 ## 任务执行流程
